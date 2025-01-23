@@ -7,7 +7,6 @@
 
 	Revision History: 2024-08-27 - initial
 */
-
 /*------------------------------------------------------------------------------------------------*/
 
 #include <cmath>
@@ -99,7 +98,7 @@ void SphHrmTran::transform(const std::vector<double>& input, AmbisonicSHTData& o
     // Perform FFT
     fftw_execute(fftw_plan_);
 
-    // Store results in output struct
+    // Store output results
     for (int l = 0; l <= lmax_; l++) {
         for (int m = -l; m <= l; m++) {
             for (int c = 0; c < output.channels; c++) {
@@ -109,7 +108,6 @@ void SphHrmTran::transform(const std::vector<double>& input, AmbisonicSHTData& o
     }
 
     if (computeYxYyYz) {
-        // Allocate memory for h_Yx, h_Yy, h_Yz
         h_Yx_ = new float[ntheta_ * nphi_];
         h_Yy_ = new float[ntheta_ * nphi_];
         h_Yz_ = new float[ntheta_ * nphi_];

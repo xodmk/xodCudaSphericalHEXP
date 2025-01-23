@@ -38,18 +38,6 @@ void initTextures();
 void cleanup_gl();
 
 
-// // int init_gl(int *argc, char **argv);
-// int init_gl(int *argc, char **argv);
-
-// void draw_text(char *string, double xpos, double ypos);
-// void keyboardFunc(unsigned char Key, int X, int Y);
-// void timerEvent(int msecs);
-// void cleanup_gl(void);
-
-// void displayCH1(void);
-// void displayCH2(void);
-
-
 // *-----------------------------------------------------------------------------------* //
 
 #endif	// end  __XOD_OPENGL_H__

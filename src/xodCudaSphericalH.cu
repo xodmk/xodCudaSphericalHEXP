@@ -101,14 +101,14 @@ void specialKeys(int key, int x, int y);
 
 
 
-// Helper function to compute the normalization factor
+// computes the normalization factor
 __device__ float normalizationFactor(int l, int m) {
     float num = (2.0 * l + 1.0) * tgammaf(l - m + 1.0);
     float den = 4.0 * M_PI * tgammaf(l + m + 1.0);
     return sqrtf(num / den);
 }
 
-// Helper function to compute the associated Legendre polynomials
+// computes the associated Legendre polynomials
 __device__ float legendrePolynomial(int l, int m, float x) {
     float pmm = 1.0;
     if (m > 0) {
@@ -223,7 +223,7 @@ __global__ void calculateMaxExtentKernel(int l, int m, int num_theta, int num_ph
     }
 }
 
-// Host function to launch the kernel and determine the sphRadiusSize
+// Host function to launch kernel and determine sphRadiusSize
 float determineSphRadiusSize(int l, int m, int num_theta, int num_phi) {
     int* d_max_extent;
     int h_max_extent = 0;

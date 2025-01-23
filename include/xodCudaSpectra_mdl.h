@@ -9,7 +9,6 @@
 
 	Revision History: 2024-08-27 - initial
 */
-
 /*------------------------------------------------------------------------------------------------*/
 
 #ifndef __XODCUDASPECTRA_MDL_H__
@@ -23,32 +22,30 @@
 ///// Ptr to 3D Array Implementation /////////////////////
 
 struct AmbisonicSHTData {
-    size_t order;      ///< Order of the spherical harmonics (m)
-    size_t degree;     ///< Degree of the spherical harmonics (n)
-    size_t channels;    ///< Number of audio channels (c)
-    std::complex<float>* data; ///< 3D array of complex coefficients (m x n x c)
+    size_t order;                   // Order of the spherical harmonics (m)
+    size_t degree;                  // Degree of the spherical harmonics (n)
+    size_t channels;                // Number of audio channels (c)
+    std::complex<float>* data;      // 3D array of complex coefficients (m x n x c)
 
-    // Constructor to allocate memory for the 3D array
     AmbisonicSHTData(size_t order, size_t degree, size_t channels) 
         : order(order), degree(degree), channels(channels), 
           data(new std::complex<float>[order * degree * channels]) {}
 
-    // Destructor to deallocate memory
     ~AmbisonicSHTData() { delete[] data; }
 
-    // Accessor function to get a reference to the 3D array
+    // get a reference to the 3D array
     std::complex<float>& operator()(size_t m, size_t n, size_t c) {
         return data[m * degree * channels + n * channels + c];
     }
 
-    // Const accessor function to get a reference to the 3D array
+    // get a reference to the 3D array
     const std::complex<float>& operator()(size_t m, size_t n, size_t c) const {
         return data[m * degree * channels + n * channels + c];
     }
 };
 
-
 class AmbisonicSHTData; // forward declaration
+
 
 class SphHrmTran {
 public:
